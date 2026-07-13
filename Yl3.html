@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生日页面</title>
+<link rel="stylesheet" href="Yl3.css">
+</head>
+<body>
+<!-- 全屏照片轮播背景（替换原video） -->
+<div class="photo-background">
+    <div class="photo-item"></div>
+    <div class="photo-item"></div>
+    <div class="photo-item"></div>
+    <div class="photo-item"></div>
+</div>
+
+<!-- 背景音乐保留 -->
+<audio autoplay loop volume="1">
+    <source src="Yl3.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 原有文字动画完全不变 -->
+<div class="text-box">
+  <div class="line" data-delay="0">伊茹</div>
+  <div class="line" data-delay="2000">今天是你的14岁生日</div>
+  <div class="line" data-delay="4000">你在这个世界的第5113天</div>
+  <div class="line" data-delay="6000">祝你生日快乐</div>
+  <div class="line" data-delay="8000">希望你在初三能继续努力</div>
+  <div class="line" data-delay="10000">能登上前十的领奖台</div>
+  <div class="line" data-delay="12000">体育能满分</div>
+  <div class="line" data-delay="14000">能考进理想的学校</div>
+  <div class="line" data-delay="16000">也希望你无论遇到什么困难都能坚持下去</div>
+  <div class="line" data-delay="18000">我知道你对自己要求很高</div>
+  <div class="line" data-delay="20000">考差一次会自责很久</div>
+  <div class="line" data-delay="22000">但也不要太伤心</div>
+  <div class="line" data-delay="24000">努力了总会有回报的</div>
+  <div class="line" data-delay="26000">我相信你一定会越来越好的</div>
+  <div class="line" data-delay="28000">也希望你能天天开心</div>
+  <div class="line" data-delay="30000">——LJ<br>2026.08.02</div>
+</div>
+
+<!-- 蛋糕（文字播放完自动显示） -->
+<div class="cake-wrap">
+  <div class="cake">
+    <div class="cake-bottom"></div>
+    <div class="cake-middle"></div>
+    <div class="cake-top"></div>
+    <div class="candle"></div>
+    <div class="flame"></div>
+  </div>
+</div>
+
+<script>
+// 文字逐行淡入淡出逻辑
+const lines = document.querySelectorAll(".line");
+const cake = document.querySelector(".cake-wrap");
+let maxDelay = 0;
+
+lines.forEach(item => {
+  const delay = Number(item.dataset.delay);
+  // 文字出现
+  setTimeout(() => {
+    item.style.opacity = "1";
+  }, delay);
+  // 文字2秒后消失
+  setTimeout(() => {
+    item.style.opacity = "0";
+  }, delay + 2000);
+  maxDelay = delay + 2000;
+});
+
+// 所有文字播放完毕，显示蛋糕
+setTimeout(() => {
+  cake.style.opacity = "1";
+}, maxDelay + 1000);
+// ==========等待40秒自动跳转==========
+setTimeout(function(){
+    window.location.href = "Yl4.html";
+}, 40000);
+</script>
+</body>
+</html>

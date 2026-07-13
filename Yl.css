@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 烟花画布全屏层级 */
+.fireworks-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* 页面背景图，铺满全屏 */
+body {
+    min-height: 100vh;
+    /* 替换成你的背景图片路径 */
+    background: url("text.jpg") center/cover no-repeat fixed;
+}
+
+/* 卡片弹出动画定义 */
+@keyframes showBox {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* 半透明悬浮卡片核心样式 */
+.Yl {
+    /* 屏幕居中悬浮 */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: min(92%, 540px);
+    padding: 45px 35px;
+    text-align: center;
+    /* 半透明白色底色，能看见下方背景图 */
+    background: rgba(255, 255, 255, 0.22);
+    /* 磨砂玻璃模糊，氛围感更强 */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    /* 悬浮阴影，营造浮起来的效果 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    /* 等待5秒烟花结束后，执行0.6秒弹出动画 */
+    animation: showBox 0.6s ease 5s forwards;
+    opacity: 0;
+}
+.sub-title {
+    font-size: 28px;
+    color: #0ae83a;
+    margin-bottom: 26px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.bless-text {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #0a54de;
+    margin-bottom: 22px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+.sign {
+    font-size: 16px;
+    color: #a31c1c;
+    margin-bottom: 36px;
+}
+.jump-btn {
+    display: inline-block;
+    padding: 13px 36px;
+    background: rgba(147, 102, 224, 0.7);
+    color: #bc0f0f;
+    text-decoration: none;
+    border-radius: 999px;
+    font-size: 16px;
+    transition: 0.3s all ease;
+    border: 1px solid rgba(255,255,255,0.4);
+}
+.jump-btn:hover {
+    background: rgba(182, 12, 12, 0.958);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgb(222, 4, 4);
+}
